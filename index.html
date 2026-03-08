@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Rs Fashion</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body class="home-page">
+
+<noscript>
+    <div class="noscript-warning">This site requires JavaScript for full functionality (cart, orders, etc.). Please enable JavaScript in your browser.</div>
+</noscript>
+
+<header class="main-header">
+
+<h1 class="brand-title">Rs Fashion</h1>
+
+<nav class="main-nav">
+<a href="#" class="nav-link">Home</a>
+<a href="cart.html" class="nav-link">Cart <span id="cart-count">0</span></a>
+<a href="order.html" class="nav-link">Order</a>
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h2 class="hero-title">Panjabi Collection</h2>
+<p class="hero-subtitle">Best Panjabi Shop in Bangladesh</p>
+
+</section>
+
+<section class="products">
+
+<div class="product">
+
+<img src="images/panjabi4.jpg" alt="Royal Panjabi">
+
+<h3>Royal Panjabi</h3>
+
+<p class="price">Price: 2000 Tk</p>
+
+<div class="size-options">
+    <span class="size-option active">M</span>
+    <span class="size-option">L</span>
+    <span class="size-option">XL</span>
+</div>
+
+<div class="button-group">
+<button class="add-btn" onclick="addCart('Royal Panjabi', 2000, this.closest('.product').querySelector('.size-option.active').innerText)">
+Add to Cart
+</button>
+<button class="order-now-btn" onclick="orderNow('Royal Panjabi', 2000, this.closest('.product').querySelector('.size-option.active').innerText)">
+🛒 Order Now
+</button>
+</div>
+
+</div>
+
+
+<div class="product">
+
+<img src="images/panjabi2.jpg" alt="White Panjabi">
+
+<h3>White Panjabi</h3>
+
+<p class="price">Price: 1500 Tk</p>
+
+<div class="size-options">
+    <span class="size-option active">M</span>
+    <span class="size-option">L</span>
+    <span class="size-option">XL</span>
+</div>
+
+<div class="button-group">
+<button class="add-btn" onclick="addCart('White Panjabi', 1500, this.closest('.product').querySelector('.size-option.active').innerText)">
+Add to Cart
+</button>
+<button class="order-now-btn" onclick="orderNow('White Panjabi', 1500, this.closest('.product').querySelector('.size-option.active').innerText)">
+🛒 Order Now
+</button>
+</div>
+
+</div>
+
+
+<div class="product">
+
+<img src="images/panjabi3.jpg" alt="Black Premium">
+
+<h3>Black Premium</h3>
+
+<p class="price">Price: 1800 Tk</p>
+
+<div class="size-options">
+    <span class="size-option active">M</span>
+    <span class="size-option">L</span>
+    <span class="size-option">XL</span>
+</div>
+
+<div class="button-group">
+<button class="add-btn" onclick="addCart('Black Premium', 1800, this.closest('.product').querySelector('.size-option.active').innerText)">
+Add to Cart
+</button>
+<button class="order-now-btn" onclick="orderNow('Black Premium', 1800, this.closest('.product').querySelector('.size-option.active').innerText)">
+🛒 Order Now
+</button>
+</div>
+
+</div>
+
+</section>
+
+<section class="promo-banner">
+<div class="promo-content">
+<h3>স্টাইলিশ ও প্রিমিয়াম পাঞ্জাবির নির্ভরযোগ্য অনলাইন শপ।</h3>
+<p>👉 সারা বাংলাদেশে হোম ডেলিভারি। 📩 তাই এখনি অর্ডার করুন।..!!🥰❤️</p>
+<div class="promo-features">
+<span class="feature">🚚 Free Delivery</span>
+<span class="feature">💳 Cash on Delivery</span>
+<span class="feature">⭐ Premium Quality</span>
+<span class="feature">🔒 Secure Payment</span>
+</div>
+</div>
+</section>
+
+<footer class="main-footer">
+
+<div class="footer-content">
+<div class="footer-section">
+<h4>Rs Fashion</h4>
+<p>Best Panjabi Shop in Bangladesh</p>
+<p>Premium quality traditional wear</p>
+</div>
+<div class="footer-section">
+<h4>Contact Us</h4>
+<p>📞 Phone: +880 1894-159607</p>
+<p>📧 Email: info@rsfashion.com</p>
+<p>📍 Location: Dhaka, Bangladesh</p>
+</div>
+<div class="footer-section">
+<h4>Follow Us</h4>
+<p>
+<a href="#" class="social-link">Facebook</a> |
+<a href="#" class="social-link">Instagram</a> |
+<a href="#" class="social-link">WhatsApp</a>
+</p>
+</div>
+</div>
+<p class="footer-bottom">© 2026 Rs Fashion. All rights reserved.</p>
+
+</footer>
+
+<script src="js/cart.js"></script>
+
+<!-- Floating Dark Mode Toggle -->
+<button id="dark-mode-toggle" class="dark-mode-float">🌙</button>
+
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/8801894159607?text=Hello%20Rs%20Fashion%2C%20I%20have%20a%20question%20about%20your%20products." class="whatsapp-float" target="_blank">
+    <img src="https://img.icons8.com/color/48/000000/whatsapp.png" alt="WhatsApp">
+</a>
+
+<script>
+// dark mode toggle
+document.getElementById('dark-mode-toggle').addEventListener('click', toggleDarkMode);
+
+// size selector active state
+document.querySelectorAll('.size-option').forEach(option => {
+    option.addEventListener('click', function() {
+        const group = this.parentElement;
+        group.querySelectorAll('.size-option').forEach(el => el.classList.remove('active'));
+        this.classList.add('active');
+    });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Checkout - Rs Fashion</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body class="order-page">
+
+<h1 class="brand-title">Rs Fashion - Checkout</h1>
+
+<div class="checkout-container">
+    <div class="order-summary">
+        <h2>Order Summary</h2>
+        <div id="orderItems" class="order-items"></div>
+        <div class="order-total">
+            <strong>Total: <span id="orderTotal">0</span> Tk</strong>
+        </div>
+    </div>
+
+    <form class="order-form" onsubmit="sendOrder(); return false;">
+        <h2>Shipping Information</h2>
+
+        <input type="text" class="input-field" id="name" placeholder="Customer Name" required>
+
+        <input type="text" class="input-field" id="father" placeholder="Father Name">
+
+        <input type="text" class="input-field" id="mother" placeholder="Mother Name">
+
+        <input type="tel" class="input-field" id="phone" placeholder="Phone Number" required>
+
+        <input type="text" class="input-field" id="district" placeholder="District (জেলা)" required>
+
+        <input type="text" class="input-field" id="upazila" placeholder="Upazila (উপজেলা)" required>
+
+        <input type="text" class="input-field" id="village" placeholder="Village (গ্রাম)" required>
+
+        <textarea class="input-field textarea-field" id="address" placeholder="Full Address"></textarea>
+
+        <h2>Payment Method</h2>
+        <select class="input-field select-field" id="payment">
+            <option>bKash</option>
+            <option>Nagad</option>
+            <option>Cash on Delivery</option>
+        </select>
+
+        <button type="submit" class="submit-btn">Place Order via WhatsApp</button>
+    </form>
+</div>
+
+<script src="js/cart.js"></script>
+
+<script>
+function loadOrderSummary() {
+    let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+    let orderItemsDiv = document.getElementById("orderItems");
+    let total = 0;
+
+    orderItemsDiv.innerHTML = '';
+
+    if (cartItems.length === 0) {
+        orderItemsDiv.innerHTML = '<p>Your cart is empty. <a href="index.html">Go back to shop</a></p>';
+        return;
+    }
+
+    cartItems.forEach(function(item) {
+        let div = document.createElement("div");
+        div.className = 'order-item';
+        div.innerHTML = `<span>${item.name} (${item.size})</span> <span>${item.price} Tk</span>`;
+        orderItemsDiv.appendChild(div);
+        total += item.price;
+    });
+
+    document.getElementById("orderTotal").innerText = total;
+}
+
+function sendOrder(){
+    let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+    if (cartItems.length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
+
+    let name = document.getElementById("name").value;
+    let father = document.getElementById("father").value;
+    let mother = document.getElementById("mother").value;
+    let phone = document.getElementById("phone").value;
+    let district = document.getElementById("district").value;
+    let upazila = document.getElementById("upazila").value;
+    let village = document.getElementById("village").value;
+    let address = document.getElementById("address").value;
+    let payment = document.getElementById("payment").value;
+
+    let itemsList = cartItems.map(item => `${item.name} (${item.size}) - ${item.price} Tk`).join('%0A');
+    let total = cartItems.reduce((sum, item) => sum + item.price, 0);
+
+    let message =
+    "🛒 New Order - Rs Fashion %0A%0A" +
+    "📦 Items:%0A" + itemsList + "%0A%0A" +
+    "💰 Total: " + total + " Tk%0A%0A" +
+    "👤 Name: "+name+"%0A"+
+    "👨 Father: "+father+"%0A"+
+    "👩 Mother: "+mother+"%0A"+
+    "📞 Phone: "+phone+"%0A"+
+    "🏙 District: "+district+"%0A"+
+    "🏡 Upazila: "+upazila+"%0A"+
+    "🌾 Village: "+village+"%0A"+
+    "📍 Address: "+address+"%0A"+
+    "💳 Payment: "+payment+"%0A%0A"+
+    "Send Money to bKash/Nagad: 01894159607";
+
+    window.open("https://wa.me/8801894159607?text="+message);
+}
+
+document.addEventListener('DOMContentLoaded', loadOrderSummary);
+</script>
+
+<!-- Floating Dark Mode Toggle -->
+<button id="dark-mode-toggle" class="dark-mode-float">🌙</button>
+
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/8801894159607?text=Hello%20Rs%20Fashion%2C%20I%20need%20help%20with%20my%20order." class="whatsapp-float" target="_blank">
+    <img src="https://img.icons8.com/color/48/000000/whatsapp.png" alt="WhatsApp">
+</a>
+
+<script>
+document.getElementById('dark-mode-toggle').addEventListener('click', toggleDarkMode);
+</script>
+
+</body>
+</html>

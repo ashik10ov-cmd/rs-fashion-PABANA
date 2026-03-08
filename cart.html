@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cart - Rs Fashion</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/cart.css">
+
+</head>
+
+<body class="home-page">
+
+<header class="main-header">
+
+<h1 class="brand-title">Rs Fashion</h1>
+
+<nav class="main-nav">
+<a href="index.html" class="nav-link">Home</a>
+<a href="cart.html" class="nav-link">Cart <span id="cart-count">0</span></a>
+<a href="order.html" class="nav-link">Order</a>
+</nav>
+
+</header>
+
+<div class="cart-container">
+
+<h2>Your Shopping Cart</h2>
+
+<div id="cartItems" class="cart-items"></div>
+
+<h3 id="total" class="total-price"></h3>
+
+<div class="cart-actions">
+<button onclick="clearCart()" class="clear-btn">Clear Cart</button>
+
+<a href="order.html">
+<button class="order-btn">Proceed to Checkout</button>
+</a>
+</div>
+
+</div>
+
+<script src="js/cart.js"></script>
+
+<script>
+showCart();
+document.getElementById('dark-mode-toggle').addEventListener('click', toggleDarkMode);
+</script>
+
+<!-- Floating Dark Mode Toggle -->
+<button id="dark-mode-toggle" class="dark-mode-float">🌙</button>
+
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/8801894159607?text=Hello%20Rs%20Fashion%2C%20I%20have%20a%20question%20about%20my%20cart." class="whatsapp-float" target="_blank">
+    <img src="https://img.icons8.com/color/48/000000/whatsapp.png" alt="WhatsApp">
+</a>
+
+</body>
+</html>
